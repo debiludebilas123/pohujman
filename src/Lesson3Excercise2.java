@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Lesson3Excercise2 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Q1. What is the capital of Spain? ");
         String q1 = input.next();
@@ -14,4 +14,5 @@ public class Lesson3Excercise2 {
         System.out.println(q3.toLowerCase().contains("rome"));
 
     }
+
 }
