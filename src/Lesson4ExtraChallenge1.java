@@ -1,8 +1,10 @@
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 class Lesson4ExtraChallenge1 {
     public static void main(String[] args) {
-        int number = 9;
+        int number = ThreadLocalRandom.current().nextInt(1,10);
+        System.out.println(number);
         int counter = 0;
         Scanner input = new Scanner(System.in);
         while (true) {
