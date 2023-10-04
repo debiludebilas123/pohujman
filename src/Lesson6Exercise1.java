@@ -3,7 +3,7 @@ public class Lesson6Exercise1 {
         int num = 10;
         while (num <= 24) {
             System.out.println(num);
-            num+=2;
+            num += 2;
         }
     }
 }
