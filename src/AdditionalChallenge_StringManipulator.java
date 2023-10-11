@@ -5,6 +5,9 @@ public class AdditionalChallenge_StringManipulator {
         while (true) {
             showMenu();
             int option = getOption();
+            if (option == 4) {
+                System.exit(0);
+            }
             String string = getString();
 
             if (option == 1) {
@@ -13,8 +16,6 @@ public class AdditionalChallenge_StringManipulator {
                 palindromeCheck(string);
             } else if (option == 3) {
                 vowelCounter(string);
-            } else if (option == 4) {
-                System.exit(0);
             } else {
                 System.out.println("Invalid number. Try entering a number ranging from 1 to 3.");
             }
