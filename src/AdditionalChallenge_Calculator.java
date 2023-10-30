@@ -10,13 +10,13 @@ public class AdditionalChallenge_Calculator {
                 System.exit(0);
             }
             if (option == 1) {
-                System.out.println(sum = addition(sum));
+                System.out.println("Output: " + (sum = addition(sum)));
             } else if (option == 2) {
-                System.out.println(sum = subtraction(sum));
+                System.out.println("Output: " + (sum = subtraction(sum)));
             } else if (option == 3) {
-                System.out.println(sum = multiplication(sum));
+                System.out.println("Output: " + (sum = multiplication(sum)));
             } else if (option == 4) {
-                System.out.println(sum = division(sum));
+                System.out.println("Output: " + (sum = division(sum)));
             } else {
                 System.out.println("Invalid number. Try entering a number ranging from 1 to 3.");
             }
