@@ -17,19 +17,23 @@ public class Lesson8Exercise3 {
             // Print out each direction
             printArr(directions);
             if (directions[3].equals("Follow Oak Street for one block then turn left onto Elm Street.")) {
-                ArrayList<String> directions2 = new ArrayList<>(Arrays.asList(directions));
-                directions2.add(4, addStep());
-                directions = directions2.toArray(new String[directions2.size()]);
+                directions = addToArray(directions);
+                printArr(directions);
             }
-            printArr(directions);
             printArr(removeLastElement(directions));
         }
+    }
+
+    public static String[] addToArray(String[] arr) {
+        ArrayList<String> directions2 = new ArrayList<>(Arrays.asList(arr));
+        directions2.add(4, addStep());
+        arr = directions2.toArray(new String[0]);
+        return arr;
     }
 
     public static String addStep() {
         return "After turning onto Elm Street, walk past the grocery store on your right.";
     }
-
 
     public static void printArr(String[] arr) {
         int step = 1;
@@ -42,8 +46,8 @@ public class Lesson8Exercise3 {
 
     public static String[] removeLastElement(String[] arr) {
         ArrayList<String> arr2 = new ArrayList<>(Arrays.asList(arr));
-        arr2.remove(arr2.size()-1);
-        arr = arr2.toArray(new String[arr2.size()]);
+        arr2.remove(arr2.size() - 1);
+        arr = arr2.toArray(new String[0]);
         return arr;
     }
 
