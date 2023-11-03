@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Lesson8ExtraChallenge3 {
     public static void main(String[] args) {
         {
+            /* Terrible, but it works and I don't want to fix it*/
+
             Scanner scanner = new Scanner(System.in);
             // Set up the directions array
             String[] directions = {"Start by exiting the building you are currently in and turning left onto the main road.",
@@ -23,22 +25,27 @@ public class Lesson8ExtraChallenge3 {
                 printArr(directions);
             }
             printArr(removeLastElement(directions));
-            String instruction = scanner.next();
-            int pos = scanner.nextInt();
 
+            System.out.print("Enter a new instruction: ");
+            String instruction = scanner.next();
+            System.out.print("Enter which position it should be inserted into: ");
+            int pos = scanner.nextInt();
+            printArr(addToSpecificPos(directions, pos, instruction));
 
         }
     }
 
-    public static String[] addToSpecificPos(String[] arr, int pos) {
-
+    public static String[] addToSpecificPos(String[] arr, int pos, String instruction) {
+        ArrayList<String> arr2 = new ArrayList<>(Arrays.asList(arr));
+        arr2.add(pos - 1, instruction);
+        arr = arr2.toArray(new String[0]);
         return arr;
     }
 
     public static String[] addToArray(String[] arr) {
-        ArrayList<String> directions2 = new ArrayList<>(Arrays.asList(arr));
-        directions2.add(4, addStep());
-        arr = directions2.toArray(new String[0]);
+        ArrayList<String> arr2 = new ArrayList<>(Arrays.asList(arr));
+        arr2.add(4, addStep());
+        arr = arr2.toArray(new String[0]);
         return arr;
     }
 
