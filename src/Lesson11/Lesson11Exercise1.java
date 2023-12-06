@@ -10,8 +10,8 @@ public class Lesson11Exercise1 {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
         try (PrintWriter out = new PrintWriter(new FileWriter("output.txt"))) {
-            for (int i = 0; i <= num; i++) {
-                out.println(i * 5);
+            for (int i = 0; i <= 12; i++) {
+                out.println(i * num);
             }
         }
     }
