@@ -1,4 +1,4 @@
-package Lesson10;
+package Lesson11;
 
 
 import java.io.BufferedReader;
@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Lesson10Exercise4 {
+public class Lesson11Exercise4 {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type 2 text file names one after another here: ");
