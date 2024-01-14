@@ -13,7 +13,8 @@ public class UserInterface {
     public void start() {
         System.out.println("""
                 1. Add an alarm     2. Remove an alarm
-                3. Edit an alarm    4. Manipulate alarms""");
+                3. Edit an alarm    4. Manipulate alarms
+                5. Turn analytics on/off""");
         while (true) {
             System.out.print("Enter the corresponding number to your choice: ");
             switch (scanner.nextInt()) {
@@ -38,11 +39,11 @@ public class UserInterface {
     public void alarmAddGet() {
         boolean status = false;
         System.out.println("Enter an alarm name: ");
-        String name = this.scanner.next();
+        String name = scanner.next();
         System.out.println("Enter the time u desire (Military time): ");
-        String time = this.scanner.next();
+        String time = scanner.next();
         System.out.println("Do you want it turned on or off?: ");
-        String choice = this.scanner.next();
+        String choice = scanner.next();
         if (choice.equalsIgnoreCase("on")) {
             status = true;
         }
@@ -64,7 +65,7 @@ public class UserInterface {
 
     public void alarmRemoveGet() {
         System.out.println("Enter the id of the alarm u want to remove: ");
-        int index = this.scanner.nextInt();
+        int index = scanner.nextInt();
         AlarmManager.removeAlarm(AlarmManager.getAlarms(), index);
     }
 
