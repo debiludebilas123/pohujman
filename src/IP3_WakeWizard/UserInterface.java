@@ -1,16 +1,20 @@
 package IP3_WakeWizard;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private final Scanner scanner;
 
-
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void start() {
+    public void start() throws IOException {
         System.out.println("""
                 1. Add an alarm     2. Remove an alarm
                 3. Edit an alarm    4. Manipulate alarms
@@ -22,9 +26,26 @@ public class UserInterface {
                 case 2 -> alarmRemoveGet();
                 case 3 -> alarmEditGet();
                 case 4 -> alarmManipulate();
-                default -> System.exit(0);
+                default -> {
+                    appendInfo();
+                    System.exit(0);
+                }
             }
         }
+    }
+
+    public static void appendInfo() throws IOException {
+        File log = new File("UserData.txt");
+        PrintWriter out = new PrintWriter(new FileWriter(log, true));
+        StringBuilder string = new StringBuilder();
+        List<Alarm> alarms = AlarmManager.getAlarms();
+
+        for (Alarm alarm : alarms) {
+            string.append(alarm.getIndex()).append(",").append(alarm.getName()).append(",").append(alarm.getTime()).append(",").append(alarm.getStatus()).append("|");
+        }
+
+        out.append(String.valueOf(string)).append("\n");
+        out.close();
     }
 
     public void alarmManipulate() {

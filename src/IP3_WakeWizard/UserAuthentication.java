@@ -42,6 +42,18 @@ public class UserAuthentication {
         return false;
     }
 
+    public boolean ifUsernameTaken(String username) throws IOException {
+        Scanner fileScan = new Scanner(Paths.get("UserLogins.txt"));
+        while (fileScan.hasNextLine()) {
+            String[] parts = fileScan.nextLine().split("$");
+            if (username.equals(parts[0])) {
+                System.out.println("duplicate");
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean loginCheck(String login) throws IOException {
         Scanner fileScan = new Scanner(Paths.get("UserLogins.txt"));
         while (fileScan.hasNextLine()) {
@@ -53,7 +65,7 @@ public class UserAuthentication {
         return true;
     }
 
-    public void login() throws IOException {
+    public String login() throws IOException {
         System.out.println("""
                 1. Login
                 2. Register""");
@@ -73,6 +85,8 @@ public class UserAuthentication {
             System.out.print("Enter your password: ");
             userLogin += ", " + scanner.next();
         }
+        String[] username = userLogin.split(",");
+        return username[0];
     }
 
 }
