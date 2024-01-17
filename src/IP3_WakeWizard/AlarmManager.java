@@ -12,6 +12,7 @@ public class AlarmManager {
     }
 
     public static void manipulateAlarm(ArrayList<Alarm> alarms, int index, boolean status) {
+        AlarmManager.printAlarms();
         Alarm newAlarm = new Alarm(index, alarms.get(index).getName(), alarms.get(index).getTime(), status);
         alarms.set(index, newAlarm);
     }
@@ -36,6 +37,7 @@ public class AlarmManager {
     }
 
     public static void removeAlarm(ArrayList<Alarm> alarms, int index) {
+        AlarmManager.printAlarms();
         alarms.remove(index);
     }
 
@@ -45,7 +47,7 @@ public class AlarmManager {
     }
 
     public static void addAlarm(int index, String name, String time, boolean status) {
-        Alarm newAlarm = new Alarm(index,name,time,status);
+        Alarm newAlarm = new Alarm(index, name, time, status);
         alarms.add(newAlarm);
     }
 

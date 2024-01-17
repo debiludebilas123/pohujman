@@ -67,27 +67,35 @@ public class UserAuthentication {
     }
 
     public String login() throws IOException {
-        System.out.println("""
-                1. Login
-                2. Register""");
-        int choice = scanner.nextInt();
+        while (true) {
+            System.out.println("""
+                    1. Login
+                    2. Register""");
+            int choice = scanner.nextInt();
 
-        if (choice == 2) {
-            register();
-        }
+            if (choice > 2 || choice < 1) {
+                System.out.println("Enter a valid number.");
+                System.out.print("\033[H\033[2J");
+                continue;
+            }
+            if (choice == 2) {
+                register();
+            }
 
-        System.out.print("LOGIN\nEnter your username: ");
-        String userLogin = scanner.next();
-        System.out.print("Enter your password: ");
-        userLogin += ", " + scanner.next();
-        while (loginCheck(userLogin)) {
-            System.out.print("Wrong login try again.\nEnter your username: ");
-            userLogin = scanner.next();
+            System.out.print("LOGIN\nEnter your username: ");
+            String userLogin = scanner.next();
             System.out.print("Enter your password: ");
             userLogin += ", " + scanner.next();
+            while (loginCheck(userLogin)) {
+                System.out.print("Wrong login try again.\nEnter your username: ");
+                userLogin = scanner.next();
+                System.out.print("Enter your password: ");
+                userLogin += ", " + scanner.next();
+            }
+            String[] username = userLogin.split(",");
+            return username[0];
         }
-        String[] username = userLogin.split(",");
-        return username[0];
+
     }
 
 }

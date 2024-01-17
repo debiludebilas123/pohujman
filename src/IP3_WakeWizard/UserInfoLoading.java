@@ -15,7 +15,7 @@ public class UserInfoLoading {
                 String[] things = indicator[1].split("\\|");
                 for (String thing : things) {
                     String[] things1 = thing.split(",");
-                    AlarmManager.addAlarm(Integer.parseInt(things1[0]),things1[1],things1[2], Boolean.parseBoolean(things1[3]));
+                    AlarmManager.addAlarm(Integer.parseInt(things1[0]), things1[1], things1[2], Boolean.parseBoolean(things1[3]));
                 }
             }
         }

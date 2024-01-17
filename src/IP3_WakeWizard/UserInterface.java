@@ -14,11 +14,11 @@ public class UserInterface {
     }
 
     public void start(String username) throws IOException {
-        System.out.println("""
+        while (true) {
+            System.out.println("""
                 1. Add an alarm     2. Remove an alarm
                 3. Edit an alarm    4. Manipulate alarms
-                5. Turn analytics on/off""");
-        while (true) {
+                Enter anything else to exit the program.""");
             System.out.print("Enter the corresponding number to your choice: ");
             switch (scanner.nextInt()) {
                 case 1 -> alarmAddGet();
@@ -60,7 +60,8 @@ public class UserInterface {
         }
     }
 
-        public void alarmManipulate() {
+    public void alarmManipulate() {
+        AlarmManager.printAlarms();
         System.out.println("Which alarm would you like to turn off/on: ");
         int index = scanner.nextInt();
         System.out.println("On/off: ");
@@ -81,7 +82,6 @@ public class UserInterface {
             status = true;
         }
         AlarmManager.addAlarm(name, time, status);
-        AlarmManager.printAlarms();
     }
 
     public void alarmEditGet() {
@@ -97,6 +97,7 @@ public class UserInterface {
     }
 
     public void alarmRemoveGet() {
+        AlarmManager.printAlarms();
         System.out.println("Enter the id of the alarm u want to remove: ");
         int index = scanner.nextInt();
         AlarmManager.removeAlarm(AlarmManager.getAlarms(), index);
