@@ -11,14 +11,17 @@ public class WakeWizard {
         Scanner scanner = new Scanner(System.in);
         File log = new File("UserData.txt");
         PrintWriter out = new PrintWriter(new FileWriter(log, true));
-        UserAuthentication authentication = new UserAuthentication(scanner);
-        String username = authentication.login();
-        out.append(username).append("$");
-        out.close();
 
         AlarmManager alarmManager = new AlarmManager();
         UserInterface ui = new UserInterface(scanner);
-        ui.start();
+        UserAuthentication authentication = new UserAuthentication(scanner);
+
+        String username = authentication.login();
+        if (!authentication.ifUsernameTaken(username)) {
+            out.append(username).append("$");
+            out.close();
+        }
+        ui.start(username);
     }
 
 }

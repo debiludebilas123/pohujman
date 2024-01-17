@@ -44,6 +44,11 @@ public class AlarmManager {
         alarms.add(newAlarm);
     }
 
+    public static void addAlarm(int index, String name, String time, boolean status) {
+        Alarm newAlarm = new Alarm(index,name,time,status);
+        alarms.add(newAlarm);
+    }
+
     public static ArrayList<Alarm> getAlarms() {
         return alarms;
     }

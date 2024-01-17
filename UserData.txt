@@ -1,1 +1,3 @@
-123$0,123,123,true|
+sudas$0,asdg,123,true|1,asdg,adfag,false|
+123$0,sdf,dafg,false|1,dsafh,5532,false|
+nojus$0,lopas,1010,true|

@@ -43,11 +43,12 @@ public class UserAuthentication {
     }
 
     public boolean ifUsernameTaken(String username) throws IOException {
-        Scanner fileScan = new Scanner(Paths.get("UserLogins.txt"));
+        UserInfoLoading loading = new UserInfoLoading();
+        Scanner fileScan = new Scanner(Paths.get("UserData.txt"));
         while (fileScan.hasNextLine()) {
-            String[] parts = fileScan.nextLine().split("$");
+            String[] parts = fileScan.nextLine().split("\\$");
             if (username.equals(parts[0])) {
-                System.out.println("duplicate");
+                loading.loadInfo(username);
                 return true;
             }
         }
