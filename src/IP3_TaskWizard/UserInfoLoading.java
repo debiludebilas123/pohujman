@@ -1,7 +1,8 @@
-package IP3_WakeWizard;
+package IP3_TaskWizard;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserInfoLoading {
@@ -15,7 +16,7 @@ public class UserInfoLoading {
                 String[] things = indicator[1].split("\\|");
                 for (String thing : things) {
                     String[] things1 = thing.split(",");
-                    AlarmManager.addAlarm(Integer.parseInt(things1[0]), things1[1], things1[2], Boolean.parseBoolean(things1[3]));
+                    TaskManager.addTask(Integer.parseInt(things1[0]), things1[1], LocalDate.parse(things1[2]), Boolean.parseBoolean(things1[3]));
                 }
             }
         }

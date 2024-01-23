@@ -1,4 +1,4 @@
-package IP3_WakeWizard;
+package IP3_TaskWizard;
 
 import java.io.File;
 import java.io.FileWriter;

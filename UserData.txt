@@ -1,3 +1,1 @@
-123$0,asd,1100,false|
-sudas$0,pydaras,1020,true|
-asd$
+123$0,sudas,2024-01-23,true|1,,2024-01-21,true|2,asdf,2024-01-21,true|3,sudas_makaka,2020-12-20,true|

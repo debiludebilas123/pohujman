@@ -1,4 +1,4 @@
-package IP3_WakeWizard;
+package IP3_TaskWizard;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class WakeWizard {
+public class TaskWizard {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         File log = new File("UserData.txt");
         PrintWriter out = new PrintWriter(new FileWriter(log, true));
 
-        AlarmManager alarmManager = new AlarmManager();
+        TaskManager alarmManager = new TaskManager();
         UserInterface ui = new UserInterface(scanner);
         UserAuthentication authentication = new UserAuthentication(scanner);
 

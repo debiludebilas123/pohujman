@@ -1,12 +1,14 @@
-package IP3_WakeWizard;
+package IP3_TaskWizard;
 
-public class Alarm {
+import java.time.LocalDate;
+
+public class Task {
     private int index;
     private String name;
-    private String time;
+    private LocalDate time;
     private boolean status;
 
-    public Alarm(int index, String name, String time, boolean status) {
+    public Task(int index, String name, LocalDate time, boolean status) {
         this.index = index;
         this.name = name;
         this.time = time;
@@ -25,8 +27,12 @@ public class Alarm {
         return this.name;
     }
 
-    public String getTime() {
+    public LocalDate getTime() {
         return this.time;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
 }
