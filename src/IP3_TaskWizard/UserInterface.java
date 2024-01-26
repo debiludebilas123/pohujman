@@ -111,4 +111,16 @@ public class UserInterface {
         TaskManager.removeTask(TaskManager.getTasks(), index);
     }
 
+    public void fileCreate() {
+        try {
+            File userDataFile = new File("UserData.txt");
+            userDataFile.createNewFile();
+
+            File userLoginsFile = new File("UserLogins.txt");
+            userLoginsFile.createNewFile();
+        } catch (IOException e) {
+            System.err.println("An error occurred while creating the files: " + e.getMessage());
+        }
+    }
+
 }

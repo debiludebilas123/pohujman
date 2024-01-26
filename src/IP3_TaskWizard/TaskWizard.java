@@ -16,6 +16,7 @@ public class TaskWizard {
         UserInterface ui = new UserInterface(scanner);
         UserAuthentication authentication = new UserAuthentication(scanner);
 
+        ui.fileCreate();
         String username = authentication.login();
         if (!authentication.ifUsernameTaken(username)) {
             out.append(username).append("$");
