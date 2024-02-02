@@ -47,15 +47,15 @@ public class UserInterface {
         File log = new File("UserData.txt");
         Scanner fileScan = new Scanner(log);
         StringBuilder updatedData = new StringBuilder();
-        List<Task> alarms = TaskManager.getTasks();
+        List<Task> tasks = TaskManager.getTasks();
 
         while (fileScan.hasNextLine()) {
             String line = fileScan.nextLine();
             String[] parts = line.split("\\$");
             if (username.equals(parts[0])) {
                 StringBuilder string = new StringBuilder(username + "$");
-                for (Task alarm : alarms) {
-                    string.append(alarm.getIndex()).append(",").append(alarm.getName()).append(",").append(alarm.getTime()).append(",").append(alarm.getStatus()).append("|");
+                for (Task task : tasks) {
+                    string.append(task.getIndex()).append(",").append(task.getName()).append(",").append(task.getTime()).append(",").append(task.getStatus()).append(",").append(task.getImportance()).append(",").append(task.getOverdue()).append("|");
                 }
                 updatedData.append(string).append("\n");
             } else {
@@ -90,6 +90,7 @@ public class UserInterface {
         boolean status = true;
         boolean validDate = false;
         LocalDate time = null;
+        boolean overdue = false;
 
         TaskManager.printTasks();
         System.out.println("Enter task name: ");
@@ -105,7 +106,13 @@ public class UserInterface {
                 System.out.println("Invalid input, enter according to the format.");
             }
         }
-        TaskManager.addTask(name, time, status);
+
+        if (time.isAfter(LocalDate.now())) {
+            overdue = true;
+        }
+        int importance = TaskManager.importanceValidation();
+
+        TaskManager.addTask(name, time, status, importance, overdue);
     }
 
     public void taskEditGet() {
@@ -118,7 +125,8 @@ public class UserInterface {
         System.out.println("""
                 Enter what you would like to edit.
                 1 - Name
-                2 - Date""");
+                2 - Date
+                3 - Importance""");
         int choice = scanner.nextInt();
         TaskManager.editTask(TaskManager.getTasks(), index, choice);
     }

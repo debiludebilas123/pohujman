@@ -17,7 +17,7 @@ public class UserInfoLoading {
                     String[] things = usernameIndicator[1].split("\\|");
                     for (String thing : things) {
                         String[] things1 = thing.split(",");
-                        TaskManager.addTask(Integer.parseInt(things1[0]), things1[1], LocalDate.parse(things1[2]), Boolean.parseBoolean(things1[3]));
+                        TaskManager.addTask(Integer.parseInt(things1[0]), things1[1], LocalDate.parse(things1[2]), Boolean.parseBoolean(things1[3]), Integer.parseInt(things1[4]), Boolean.parseBoolean(things1[5]));
                     }
                 }
                 break;

@@ -1,3 +1,2 @@
-asd$0,sadg,1010-01-22,true|
-123$0,sdfh,2020-10-10,false|
-dfhg$
+123$0,sad,1998-10-10,true,3,false|1,nkvlckhgs,2020-10-10,false,3,false|2,adfhfda,2200-10-10,true,20,true|3,dhfsa,1010-10-10,true,5,false|4,dfsh,1010-10-10,true,5,false|
+dfshdsahf$
