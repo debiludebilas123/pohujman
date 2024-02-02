@@ -1,6 +1,7 @@
 package IP3_TaskWizard;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,8 +27,18 @@ public class TaskManager {
             Task newTask = new Task(index, newName, time, status);
             tasks.set(index, newTask);
         } else if (choice == 2) {
-            System.out.println("Enter the new time: ");
-            LocalDate newTime = LocalDate.parse(scanner.next());
+            boolean validDate = false;
+            LocalDate newTime = null;
+            System.out.println("Enter the new time YYYY-MM-DD: ");
+            while (!validDate) {
+                try {
+                    String dateString = scanner.next();
+                    newTime = LocalDate.parse(dateString);
+                    validDate = true;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Invalid input, enter according to the format.");
+                }
+            }
             String name = tasks.get(index).getName();
             boolean status = tasks.get(index).getStatus();
             Task newTask = new Task(index, name, newTime, status);
@@ -59,11 +70,13 @@ public class TaskManager {
         }
     }
 
+    public static boolean isListEmpty() {
+        return tasks.isEmpty();
+    }
+
     public static void printTasks() {
         for (Task task : tasks) {
             System.out.println(task.getIndex() + " | Name: " + task.getName() + " - " + task.getTime() + " " + (task.getStatus() ? "Completed" : "Due"));
         }
     }
-
-
 }

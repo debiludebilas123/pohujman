@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -26,10 +27,10 @@ public class UserInterface {
             try {
                 int choice = scanner.nextInt();
                 switch (choice) {
-                    case 1 -> alarmAddGet();
-                    case 2 -> alarmRemoveGet();
-                    case 3 -> alarmEditGet();
-                    case 4 -> alarmManipulate();
+                    case 1 -> taskAddGet();
+                    case 2 -> taskRemoveGet();
+                    case 3 -> taskEditGet();
+                    case 4 -> taskManipulate();
                     default -> {
                         appendInfo(username);
                         System.exit(0);
@@ -69,10 +70,13 @@ public class UserInterface {
         }
     }
 
-    public void alarmManipulate() {
+    public void taskManipulate() {
+        if (TaskManager.isListEmpty()) {
+            System.out.println("There are no tasks.");
+            return;
+        }
         TaskManager.printTasks();
-        System.out.println("Which task would you like to change the status of: ");
-        int index = scanner.nextInt();
+        int index = indexValidation();
         System.out.println("""
                 1. Completed
                 2. Due""");
@@ -82,20 +86,35 @@ public class UserInterface {
         TaskManager.manipulateTask(TaskManager.getTasks(), index, status);
     }
 
-    public void alarmAddGet() {
-        TaskManager.printTasks();
+    public void taskAddGet() {
         boolean status = true;
+        boolean validDate = false;
+        LocalDate time = null;
+
+        TaskManager.printTasks();
         System.out.println("Enter task name: ");
         String name = scanner.next();
-        System.out.println("Enter the deadline YYYY-MM-DD: ");
-        LocalDate time = LocalDate.parse(scanner.next());
+
+        while (!validDate) {
+            try {
+                System.out.println("Enter the deadline YYYY-MM-DD: ");
+                String dateString = scanner.next();
+                time = LocalDate.parse(dateString);
+                validDate = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid input, enter according to the format.");
+            }
+        }
         TaskManager.addTask(name, time, status);
     }
 
-    public void alarmEditGet() {
+    public void taskEditGet() {
+        if (TaskManager.isListEmpty()) {
+            System.out.println("There are no tasks.");
+            return;
+        }
         TaskManager.printTasks();
-        System.out.println("\nEnter which task you would like to edit: ");
-        int index = scanner.nextInt();
+        int index = indexValidation();
         System.out.println("""
                 Enter what you would like to edit.
                 1 - Name
@@ -104,10 +123,13 @@ public class UserInterface {
         TaskManager.editTask(TaskManager.getTasks(), index, choice);
     }
 
-    public void alarmRemoveGet() {
+    public void taskRemoveGet() {
+        if (TaskManager.isListEmpty()) {
+            System.out.println("There are no tasks.");
+            return;
+        }
         TaskManager.printTasks();
-        System.out.println("Enter the index of the task u want to remove: ");
-        int index = scanner.nextInt();
+        int index = indexValidation();
         TaskManager.removeTask(TaskManager.getTasks(), index);
     }
 
@@ -121,6 +143,25 @@ public class UserInterface {
         } catch (IOException e) {
             System.err.println("An error occurred while creating the files: " + e.getMessage());
         }
+    }
+
+    public int indexValidation() {
+        System.out.println("\nEnter the index of the task: ");
+        int index;
+        while (true) {
+            try {
+                index = scanner.nextInt();
+                if (index < 0 || index > TaskManager.getTasks().size()-1) {
+                    System.out.println("Invalid input, enter a valid index.");
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, enter a number.");
+                scanner.next();
+            }
+        }
+        return index;
     }
 
 }
