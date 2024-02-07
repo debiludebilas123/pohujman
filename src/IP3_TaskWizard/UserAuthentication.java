@@ -69,6 +69,7 @@ public class UserAuthentication {
     public String login() throws IOException {
         while (true) {
             System.out.println("""
+                    Welcome to TaskWizard
                     1. Login
                     2. Register""");
             int choice = scanner.nextInt();
