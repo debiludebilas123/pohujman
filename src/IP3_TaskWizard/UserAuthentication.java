@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserAuthentication {
@@ -68,35 +69,41 @@ public class UserAuthentication {
 
     public String login() throws IOException {
         while (true) {
-            System.out.println("""
-                    Welcome to TaskWizard
-                    1. Login
-                    2. Register""");
-            int choice = scanner.nextInt();
+            try {
+                System.out.println("""
+                        Welcome to TaskWizard
+                        1. Login
+                        2. Register""");
+                int choice = scanner.nextInt();
 
-            if (choice > 2 || choice < 1) {
+                if (choice > 2 || choice < 1) {
+                    System.out.println("Enter a valid number.");
+                    continue;
+                }
+                if (choice == 2) {
+                    register();
+                }
+                break;
+            } catch (InputMismatchException e) {
                 System.out.println("Enter a valid number.");
-                System.out.print("\033[H\033[2J");
-                continue;
+                scanner.next();
             }
-            if (choice == 2) {
-                register();
-            }
-
-            System.out.print("LOGIN\nEnter your username: ");
-            String userLogin = scanner.next();
-            System.out.print("Enter your password: ");
-            userLogin += ", " + scanner.next();
-            while (loginCheck(userLogin)) {
-                System.out.print("Wrong login try again.\nEnter your username: ");
-                userLogin = scanner.next();
-                System.out.print("Enter your password: ");
-                userLogin += ", " + scanner.next();
-            }
-            String[] username = userLogin.split(",");
-            return username[0];
         }
 
+        System.out.print("LOGIN\nEnter your username: ");
+        String userLogin = scanner.next();
+        System.out.print("Enter your password: ");
+        userLogin += ", " + scanner.next();
+        while (loginCheck(userLogin)) {
+            System.out.print("Wrong login try again.\nEnter your username: ");
+            userLogin = scanner.next();
+            System.out.print("Enter your password: ");
+            userLogin += ", " + scanner.next();
+        }
+        String[] username = userLogin.split(",");
+        return username[0];
     }
 
 }
+
+
