@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AIPython/AIPython.iml" filepath="$PROJECT_DIR$/AIPython/AIPython.iml" />
       <module fileurl="file://$PROJECT_DIR$/J68V47-Classwork.iml" filepath="$PROJECT_DIR$/J68V47-Classwork.iml" />
     </modules>
   </component>

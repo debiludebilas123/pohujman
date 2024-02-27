@@ -1,1 +1,2 @@
-123$
+123$0,asd,1010-10-10,true,10,false|
+asd$0,asdfadfh,2020-10-10,true,5,false|
