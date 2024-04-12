@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AIPython/AIPython.iml" filepath="$PROJECT_DIR$/AIPython/AIPython.iml" />
       <module fileurl="file://$PROJECT_DIR$/J68V47-Classwork.iml" filepath="$PROJECT_DIR$/J68V47-Classwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/professionalthing/professionalthing.iml" filepath="$PROJECT_DIR$/professionalthing/professionalthing.iml" />
     </modules>
   </component>
 </project>
